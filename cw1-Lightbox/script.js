@@ -1,5 +1,5 @@
-const firstimg = document.querySelectorAll('.gallery img')
-firstimg.addEventListner('click', showLightbox)
+const firstimg = document.querySelector('#test')
+firstimg.addEventListener('click', showLightbox)
 
 function showLightbox () {
   console.log('showlight')
