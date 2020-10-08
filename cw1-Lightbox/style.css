@@ -1,3 +1,6 @@
-body{
-    background-color: blue;
+.gallery{
+    display: grid;
+    grid-template-columns: repeat(3,400px);
+    justify-content: center;
+    gap: 10px;
 }

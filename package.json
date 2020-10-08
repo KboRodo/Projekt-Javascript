@@ -16,7 +16,9 @@
     "url": "https://github.com/KboRodo/Projekt-Javascript/issues"
   },
   "homepage": "https://github.com/KboRodo/Projekt-Javascript#readme",
-  "dependencies": {},
+  "dependencies": {
+    "live-server": "^1.2.1"
+  },
   "devDependencies": {
     "eslint": "^7.10.0",
     "eslint-config-standard": "^14.1.1",
