@@ -17,6 +17,11 @@ i {
     font-size: 500%;
     cursor: pointer;
 }
+#close{
+    position:absolute;
+    right: 10px;
+    top: 10px;
+}
 .grid img {
     width: 200px;
     height: 200px;
