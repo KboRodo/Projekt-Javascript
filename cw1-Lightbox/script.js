@@ -25,6 +25,7 @@ function showLightbox (ev) { // otwieranie lightboxa
   prevEl = ev.target.previousElementSibling
   nextEl = ev.target.nextElementSibling
 }
+
 next.addEventListener('click', function () { // przwijanie zdjec do przodu
   hideLightbox()
   nextEl ? nextEl.click() : images[0].click()// sprawdzenie czy obecne zdjecie jest ostatnim  w kolejnosci, jesli tak to nastepuje zawiniecie
