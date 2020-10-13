@@ -10,12 +10,19 @@ align-content: center;
 grid-gap: 10px;
 height: 100vh;
 }
+
+i {
+    font-size: 500%;
+    color: white;
+    margin: 10px;
+}
+
 .grid img {
     width: 200px;
     height: 200px;
     cursor: pointer;
 }
-#lightbox {
+.lightbox {
     position: fixed;
     z-index: 1000;
     top: 0;
@@ -24,12 +31,12 @@ height: 100vh;
     background-color:rgba(0,0,0,.8);
     display: none;
 }
-#lightbox.active {
+.lightbox.visible {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-#lightbox img {
+.lightbox img {
     max-width: 90%;
     max-height: 80%;
     padding: 4px;

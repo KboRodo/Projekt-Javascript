@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/KboRodo/Projekt-Javascript#readme",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.1",
     "live-server": "^1.2.1"
   },
   "devDependencies": {
