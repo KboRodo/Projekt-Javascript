@@ -34,11 +34,11 @@ function showLightbox (ev) { // otwieranie lightboxa
 next.addEventListener('click', function () { // przwijanie zdjec do przodu
   console.log('next', nextEl)
   hideLightbox()
-  nextEl ? nextEl.click() : firstImg.click()
+  nextEl ? nextEl.click() : firstImg.click()// sprawdzenie czy obecne zdjecie jest ostatnim  w kolejnosci, jesli tak to nastepuje zawiniecie
 })
 
 prev.addEventListener('click', function () {
   console.log('prev-', prevEl)
   hideLightbox()
-  prevEl ? prevEl.click() : lastImg.click()
+  prevEl ? prevEl.click() : lastImg.click()// sprawdzenie czy obecne zdjecie jest pierwszym  w kolejnosci, jesli tak to nastepuje zawiniecie
 })
