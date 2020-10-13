@@ -1,11 +1,10 @@
 const images = document.querySelectorAll('.grid img')
 const lightbox = document.querySelector('.lightbox')
-const firstImg = document.querySelector('.grid img')
 
-const lastImg = indexImages()// ostatnie zdjecie
 const prev = document.querySelector('#prev')// przycisk poprzednie zdjecie
 const next = document.querySelector('#next')// przycisk nastepne zdjecie
 const close = document.querySelector('#close')// przycisk zamykanie lightboxa
+
 let prevEl// nastepny element danego zdjecia
 let nextEl// poprzedni element danego zjecia
 
@@ -14,14 +13,9 @@ function hideLightbox () {
   lightbox.classList.remove('visible')
 }
 
-function indexImages () {
-  var i
-  for (let index = 0; index < images.length; index++) {
-    const img = images[index]
-    i = index
-    img.addEventListener('click', showLightbox)
-  }
-  return images[i]
+for (let index = 0; index < images.length; index++) {
+  const img = images[index]
+  img.addEventListener('click', showLightbox)
 }
 
 function showLightbox (ev) { // otwieranie lightboxa
@@ -32,13 +26,11 @@ function showLightbox (ev) { // otwieranie lightboxa
   nextEl = ev.target.nextElementSibling
 }
 next.addEventListener('click', function () { // przwijanie zdjec do przodu
-  console.log('next', nextEl)
   hideLightbox()
-  nextEl ? nextEl.click() : firstImg.click()// sprawdzenie czy obecne zdjecie jest ostatnim  w kolejnosci, jesli tak to nastepuje zawiniecie
+  nextEl ? nextEl.click() : images[0].click()// sprawdzenie czy obecne zdjecie jest ostatnim  w kolejnosci, jesli tak to nastepuje zawiniecie
 })
 
 prev.addEventListener('click', function () {
-  console.log('prev-', prevEl)
   hideLightbox()
-  prevEl ? prevEl.click() : lastImg.click()// sprawdzenie czy obecne zdjecie jest pierwszym  w kolejnosci, jesli tak to nastepuje zawiniecie
+  prevEl ? prevEl.click() : images[images.length - 1].click()// sprawdzenie czy obecne zdjecie jest pierwszym  w kolejnosci, jesli tak to nastepuje zawiniecie
 })
