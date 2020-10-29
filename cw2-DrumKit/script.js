@@ -139,9 +139,18 @@ function onPlayBtnClick () {
 }
 
 function playSound (id) {
+  const padId = id + 'Pad'
+  const pad = document.getElementById(padId)
   const sound = document.querySelector('#' + id)
   sound.currentTime = 0
   sound.play()
+  setTimeout(
+    () => {
+      pad.classList.remove('active')
+    },
+    sound.duration
+  )
+  pad.classList.add('active')
 }
 
 function onPlayAllBtnClick () {

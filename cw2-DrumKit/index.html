@@ -6,27 +6,72 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"defer ></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <audio src="./samples/clap-808.wav" controls id="clap"></audio>
-    <audio src="./samples/cowbell-808.wav" controls id="cowbell"></audio>
-    <audio src="./samples/hihat-808.wav" controls id="hihat"></audio>
-    <audio src="./samples/kick-808.wav" controls id="kick"></audio>
-    <audio src="./samples/openhat-808.wav" controls id="openhat"></audio>
-    <audio src="./samples/perc-808.wav" controls id="perc"></audio>
-    <audio src="./samples/snare-808.wav" controls id="snare808"></audio>
-    <audio src="./samples/snare-analog.wav" controls id="snareAnalog"></audio>
-    <audio src="./samples/tom-808.wav" controls id="tom"></audio>
-
-    <button id="recordBtn">Record</button>
-    <button id="playBtn">Play</button>
-    <button id="playAllBtn">PlayAll</button>
-    <button id=clearBtn>Clear</button>
-
-    <button id="recordChanel1">Record 1</button>
-    <button id="recordChanel2">Record 2</button>
-    <button id="recordChanel3">Record 3</button>
-    <button id="recordChanel4">Record 4</button>
-
+    <audio src="./samples/clap-808.wav" id="clap"></audio>
+    <audio src="./samples/cowbell-808.wav" id="cowbell"></audio>
+    <audio src="./samples/hihat-808.wav" id="hihat"></audio>
+    <audio src="./samples/kick-808.wav"id="kick"></audio>
+    <audio src="./samples/openhat-808.wav" id="openhat"></audio>
+    <audio src="./samples/perc-808.wav" id="perc"></audio>
+    <audio src="./samples/snare-808.wav" id="snare808"></audio>
+    <audio src="./samples/snare-analog.wav" id="snareAnalog"></audio>
+    <audio src="./samples/tom-808.wav" id="tom"></audio>
+    <div class="drums">
+        <h2>Perkusja</h2>
+        <div class="drumPads">
+            <div class="drumBtn" id="clapPad">
+                <p>Clap</p>
+                <p>A</p>
+            </div>
+            <div class="drumBtn" id="clapPad">
+                <p>Cowbell</p>
+                <p>S</p>
+            </div>
+            <div class="drumBtn" id="cowbellPad">
+                <p>Hihat</p>
+                <p>D</p>
+            </div>
+            <div class="drumBtn" id="hihatPad">
+                <p>Kick</p>
+                <p>F</p>
+            </div>
+            <div class="drumBtn" id="kickPad">
+                <p>Openhat</p>
+                <p>G</p>
+            </div>
+            <div class="drumBtn" id="openhatPad">
+                <p>Perc</p>
+                <p>H</p>
+            </div>
+            <div class="drumBtn" id="percPad">
+                <p>Snare 808</p>
+                <p>J</p>
+            </div>
+            <div class="drumBtn" id="sare808Pad">
+                <p>Snare analog</p>
+                <p>K</p>
+            </div>
+            <div class="drumBtn" id="tomPad">
+                <p>Tom</p>
+                <p>L</p>
+            </div>
+        </div>
+    </div>
+    <div class="playbackControllers">
+        <h2>Sterowanie</h2>
+        <button class="controller" id="recordBtn">Record</button>
+        <button class="controller" id="playBtn">Play</button>
+        <button class="controller" id="playAllBtn">PlayAll</button>
+        <button class="controller" id=clearBtn>Clear</button>
+    </div>
+    <div class="chanelControllers">
+        <h2>Kanały</h2>
+        <button class="chanelSelector" id="recordChanel1">Chanel 1</button>
+        <button class="chanelSelector" id="recordChanel2">Chanel 2</button>
+        <button class="chanelSelector" id="recordChanel3">Chanel 3</button>
+        <button class="chanelSelector" id="recordChanel4">Chanel 4</button>
+    </div>
 </body>
 </html>

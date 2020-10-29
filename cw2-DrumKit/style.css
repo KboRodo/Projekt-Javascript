@@ -1,0 +1,38 @@
+body{
+    background: rgb(2,249,171);
+    background: linear-gradient(90deg, rgba(2,249,171,1) 7%, rgba(2,239,169,1) 25%, rgba(95,95,215,1) 68%, rgba(111,223,246,1) 99%);
+    text-align: center;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+}
+.controller{
+    text-align: center;
+    width: 100px;
+    height: 40px;
+}
+.chanelSelector{
+    width: 150px;
+    height: 60px;
+}
+.playbackControllers{
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+.drumBtn{
+    width: 100px;
+    height: 100px;
+    border: 5px solid black;
+    margin: 5px;
+    background-color: gray;
+}
+.drumBtn.active{
+    background-color: white;
+}
+.drums{
+    padding-top: 100px;
+    justify-content: center;
+}
+.drumPads{
+    display: flex;
+    justify-content: center;
+}
