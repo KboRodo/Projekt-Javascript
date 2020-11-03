@@ -12,7 +12,7 @@ const note = {
   content: '',
   colour: '#ff1280',
   pinned: false,
-  createDate: new Date()
+  createDate: ''
 }
 
 // 3. modyfkowanie struktury htmla-ładowanie po otwarciu strony/dodaniu nowej notatki
@@ -27,6 +27,10 @@ function showNotes () {
   })
 
   const notesContainer = document.querySelector('main')
+  // usuwanie starych kontenerow przez zaladowaniem nowych
+  while (notesContainer.firstChild) {
+    notesContainer.removeChild(notesContainer.lastChild)
+  }
 
   // drugi sposób
   for (const note of mappedNotes) {
@@ -42,7 +46,7 @@ function showNotes () {
     htmlDate.innerHTML = note.createDate.toLocaleString()
     htmlRemoveBtn.innerHTML = 'usuń'
 
-    htmlRemoveBtn.addEventListener('click', removeNote())
+    htmlRemoveBtn.addEventListener('click', removeNote)
 
     htmlNote.classList.add('note')
     htmlNote.appendChild(htmlTitle)
@@ -53,8 +57,29 @@ function showNotes () {
     notesContainer.appendChild(htmlNote)
   }
 }
-function removeNote () {
 
+function removeNote (event) {
+  event.target.parentNode.remove()
+  const elementDate = event.target.parentNode.querySelector('h4').innerHTML
+  let testDate
+  let index = 0
+
+  const notesFromLocalStorage = JSON.parse(localStorage.getItem(lsKey))
+  notesFromLocalStorage.map(note => {
+    notes.push(note)
+  })
+
+  notes.forEach(note => {
+    testDate = new Date(note.createDate).toLocaleString()
+
+    if (elementDate === testDate) {
+      // dotąd działa
+      notes.splice(index)
+      localStorage.setItem(lsKey, JSON.stringify(notes))
+    } else {
+      index++
+    }
+  })
 }
 // usuwanie elementu ze struktury html
 // notesContainer.removeChild()
@@ -69,5 +94,6 @@ function onNewNote () {
   const newNote = Object.assign({}, note)
   newNote.title = title
   newNote.content = content
+  newNote.createDate = new Date()
   saveNote(newNote)
 }
