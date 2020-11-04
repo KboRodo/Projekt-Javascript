@@ -17,6 +17,7 @@ const note = {
 
 // 3. modyfkowanie struktury htmla-ładowanie po otwarciu strony/dodaniu nowej notatki
 document.querySelector('#shownotes').addEventListener('click', showNotes)
+// wyswietlanie notatek
 function showNotes () {
   const notesFromLocalStorage = JSON.parse(localStorage.getItem(lsKey))
   console.log(notesFromLocalStorage)
@@ -58,7 +59,7 @@ function showNotes () {
     htmlNote.appendChild(htmlRemoveBtn)
     htmlNote.appendChild(htmlPinBtn)
 
-    notesContainer.appendChild(htmlNote)
+    note.pinned ? notesContainer.prepend(htmlNote) : notesContainer.appendChild(htmlNote)
   }
 }
 
