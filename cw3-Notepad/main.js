@@ -40,19 +40,23 @@ function showNotes () {
     const htmlContent = document.createElement('p')
     const htmlDate = document.createElement('h4')
     const htmlRemoveBtn = document.createElement('button')
+    const htmlPinBtn = document.createElement('button')
 
     htmlTitle.innerHTML = note.title
     htmlContent.innerHTML = note.content
     htmlDate.innerHTML = note.createDate.toLocaleString()
     htmlRemoveBtn.innerHTML = 'usuń'
+    htmlPinBtn.innerHTML = 'przypnij'
 
     htmlRemoveBtn.addEventListener('click', removeNote)
+    htmlPinBtn.addEventListener('click', pinnedNote)
 
     htmlNote.classList.add('note')
     htmlNote.appendChild(htmlTitle)
     htmlNote.appendChild(htmlContent)
     htmlNote.appendChild(htmlDate)
     htmlNote.appendChild(htmlRemoveBtn)
+    htmlNote.appendChild(htmlPinBtn)
 
     notesContainer.appendChild(htmlNote)
   }
@@ -61,10 +65,12 @@ function showNotes () {
 function removeNote (event) {
   event.target.parentNode.remove()
   const elementDate = event.target.parentNode.querySelector('h4').innerHTML
-  let testDate
-  let index = 0
-
   const notesFromLocalStorage = JSON.parse(localStorage.getItem(lsKey))
+
+  let testDate
+  notes.length = 0
+  const newNotes = []
+
   notesFromLocalStorage.map(note => {
     notes.push(note)
   })
@@ -72,13 +78,14 @@ function removeNote (event) {
   notes.forEach(note => {
     testDate = new Date(note.createDate).toLocaleString()
 
-    if (elementDate === testDate) {
-      // dotąd działa
-      notes.splice(index)
-      localStorage.setItem(lsKey, JSON.stringify(notes))
-    } else {
-      index++
+    if (elementDate !== testDate) {
+      if (newNotes.includes(note) === false) {
+        newNotes.push(note)
+      }
     }
+    console.log('nn notes after loop:', newNotes)
+    localStorage.removeItem(lsKey)
+    localStorage.setItem(lsKey, JSON.stringify(newNotes))
   })
 }
 // usuwanie elementu ze struktury html
@@ -96,4 +103,20 @@ function onNewNote () {
   newNote.content = content
   newNote.createDate = new Date()
   saveNote(newNote)
+}
+// przypinanie notatki
+function pinnedNote (event) {
+  const elementDate = event.target.parentNode.querySelector('p').innerHTML
+  const notesFromLocalStorage = JSON.parse(localStorage.getItem(lsKey))
+  notesFromLocalStorage.map(note => {
+    notes.push(note)
+  })
+
+  notes.forEach(note => {
+    if (elementDate === note.content) {
+      note.pinned = true
+    }
+  })
+  console.log(notes)
+  localStorage.setItem(lsKey, JSON.stringify(note))
 }
