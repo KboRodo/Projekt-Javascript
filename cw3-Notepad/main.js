@@ -104,19 +104,25 @@ function onNewNote () {
   newNote.createDate = new Date()
   saveNote(newNote)
 }
-// przypinanie notatki
+// przypinanie/odpinanie notatki
 function pinnedNote (event) {
-  const elementDate = event.target.parentNode.querySelector('p').innerHTML
+  const elementDate = event.target.parentNode.querySelector('h4').innerHTML
   const notesFromLocalStorage = JSON.parse(localStorage.getItem(lsKey))
+
+  let testDate
+  notes.length = 0
+
   notesFromLocalStorage.map(note => {
     notes.push(note)
   })
 
   notes.forEach(note => {
-    if (elementDate === note.content) {
-      note.pinned = true
+    testDate = new Date(note.createDate).toLocaleString()
+
+    if (elementDate === testDate) {
+      note.pinned ? note.pinned = false : note.pinned = true
     }
+    localStorage.removeItem(lsKey)
+    localStorage.setItem(lsKey, JSON.stringify(notes))
   })
-  console.log(notes)
-  localStorage.setItem(lsKey, JSON.stringify(note))
 }
