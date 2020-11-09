@@ -1,4 +1,3 @@
-
 function Chanel () {
   this.Tracks = [] // tablica w której przechowywane są dzwięki
 

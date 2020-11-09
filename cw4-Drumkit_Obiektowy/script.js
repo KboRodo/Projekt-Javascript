@@ -4,6 +4,7 @@ import Chanel from './Chanel.js'
 document.body.addEventListener('keypress', onKeyPress)
 document.querySelector('#recordBtn').addEventListener('click', onRecordBtnClick)
 document.querySelector('#playBtn').addEventListener('click', onPlayBtnClick)
+document.querySelector('#playAllBtn').addEventListener('click', onPlayAllBtnClick)
 
 const chanelSelectors = document.querySelectorAll('.chanelSelector')
 
@@ -17,6 +18,13 @@ let currentChanel
 chanelSelectors.forEach(button => {
   button.addEventListener('click', selectChanel)
 })
+
+function onPlayAllBtnClick () {
+  chanel1.playSounds()
+  chanel2.playSounds()
+  chanel3.playSounds()
+  chanel4.playSounds()
+}
 
 function selectChanel (ev) {
   switch (ev.target.id) {
