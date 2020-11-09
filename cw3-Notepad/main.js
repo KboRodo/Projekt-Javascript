@@ -3,6 +3,7 @@ const lsKey = 'notes'
 function saveNote (note) {
   notes.push(note)
   localStorage.setItem(lsKey, JSON.stringify(notes))
+  showNotes()// wyswietlanie zaktualizowanego widoku strony
 }
 // notatka: title, content, colour, pinned, createDate
 const notes = []
@@ -14,6 +15,7 @@ const note = {
   pinned: false,
   createDate: ''
 }
+showNotes()// wyswietlanie zaktualizowanego widoku strony
 
 // 3. modyfkowanie struktury htmla-ładowanie po otwarciu strony/dodaniu nowej notatki
 document.querySelector('#shownotes').addEventListener('click', showNotes)
@@ -59,6 +61,8 @@ function showNotes () {
     htmlNote.appendChild(htmlRemoveBtn)
     htmlNote.appendChild(htmlPinBtn)
 
+    htmlNote.style.backgroundColor = note.colour
+
     note.pinned ? notesContainer.prepend(htmlNote) : notesContainer.appendChild(htmlNote)
   }
 }
@@ -98,11 +102,13 @@ document.querySelector('#noteAdd').addEventListener('click', onNewNote)
 function onNewNote () {
   const title = document.querySelector('#noteTitle').value
   const content = document.querySelector('#noteContent').value
+  const color = document.querySelector('#notecolor').value
   console.log(title, content)
   const newNote = Object.assign({}, note)
   newNote.title = title
   newNote.content = content
   newNote.createDate = new Date()
+  newNote.colour = color
   saveNote(newNote)
 }
 // przypinanie/odpinanie notatki
@@ -126,4 +132,5 @@ function pinnedNote (event) {
     localStorage.removeItem(lsKey)
     localStorage.setItem(lsKey, JSON.stringify(notes))
   })
+  showNotes()// wyswietlanie zaktualizowanego widoku strony
 }
