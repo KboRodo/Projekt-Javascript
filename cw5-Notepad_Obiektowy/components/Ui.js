@@ -16,16 +16,6 @@ class NotesUI {
     const htmlRemoveBtn = document.createElement('button')
     const htmlPinBtn = document.createElement('button')
 
-    htmlPinBtn.addEventListener('click', () => {
-      if (note.pinned) {
-        note.pinned = false
-        htmlPinBtn.innerHTML = 'Przypnij'
-      } else {
-        note.pinned = true
-        htmlPinBtn.innerHTML = 'Odepnij'
-      }
-    })
-
     htmlTitle.innerHTML = note.title
     htmlContent.innerHTML = note.content
     htmlDate.innerHTML = note.createdDate.toLocaleString()
@@ -37,6 +27,7 @@ class NotesUI {
     htmlNote.appendChild(htmlDate)
     htmlNote.appendChild(htmlRemoveBtn)
     htmlNote.appendChild(htmlPinBtn)
+    htmlNote.style.backgroundColor = note.color
 
     return htmlNote
   }
@@ -48,7 +39,9 @@ class NotesUI {
 
   addNote (note) {
     const htmlNote = this.createNote(note)
-    this.notesContainer.appendChild(htmlNote)
+    note.pinned
+      ? this.notesContainer.prepend(htmlNote)
+      : this.notesContainer.appendChild(htmlNote)
   }
 
   removeNote (id) {
