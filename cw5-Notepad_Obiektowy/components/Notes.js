@@ -24,5 +24,14 @@ class Notes {
   getNote (id) {
     return this.notesArr.find(el => el.id === id)
   }
+
+  loadFromLocalStorage () {
+    if (this.db.getNotes()) {
+      this.notesArr = this.db.getNotes()
+      this.notesArr.forEach(note => {
+        this.notesUI.addNote(note)
+      })
+    }
+  }
 }
 export default Notes

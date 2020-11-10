@@ -4,7 +4,7 @@ class Db {
   }
 
   saveNotes (notes) {
-    localStorage.setItem(this.notesLSKey, notes)
+    localStorage.setItem(this.notesLSKey, JSON.stringify(notes))
   }
 
   getNotes () {
