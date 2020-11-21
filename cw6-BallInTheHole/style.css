@@ -1,0 +1,21 @@
+.gameArea{
+    width: 100%;
+    height: 100%;
+}
+.ball {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: red;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
+.hole{
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    z-index: -2;
+    position: absolute;
+    background-color: green;
+}
