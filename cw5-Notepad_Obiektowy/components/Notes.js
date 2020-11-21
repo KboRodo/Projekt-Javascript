@@ -14,7 +14,9 @@ class Notes {
   }
 
   removeNote (id) {
-
+    this.notesArr.splice(this.getNote(id), 0)
+    //this.notesUI.removeNote(id)
+    //this.Db.removeNote(id)
   }
 
   getNotes () {

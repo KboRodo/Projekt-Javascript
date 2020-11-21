@@ -10,6 +10,10 @@ class Db {
   getNotes () {
     return JSON.parse(localStorage.getItem(this.notesLSKey))
   }
+
+  /* removeNotes(id){
+
+  } */
 }
 
 export default Db

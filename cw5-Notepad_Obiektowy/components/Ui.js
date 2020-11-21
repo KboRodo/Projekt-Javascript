@@ -1,3 +1,5 @@
+import Notes from './Notes.js'
+
 class NotesUI {
   constructor (containerSelector) {
     this.notesContainer = this.getNotesContainer(containerSelector)
@@ -28,26 +30,30 @@ class NotesUI {
     htmlNote.appendChild(htmlRemoveBtn)
     htmlNote.appendChild(htmlPinBtn)
     htmlNote.style.backgroundColor = note.color
-
+    htmlNote.id = note.id
+    htmlRemoveBtn.addEventListener('click', NotesUI.prototype.removeNote(note.id))
     return htmlNote
   }
 
-  getNote (id) {
+  getNote (id) { // blad  z funkcja z jakiegos powodu nie ma dostepu do kontenera
     const noteSelector = '#' + id
-    this.notesContainer.querySelector(noteSelector)
+    const note = this.notesContainer.querySelector(noteSelector)
+    return note
   }
 
   addNote (note) {
     const htmlNote = this.createNote(note)
+    console.log('container', this.notesContainer)
     note.pinned
       ? this.notesContainer.prepend(htmlNote)
       : this.notesContainer.appendChild(htmlNote)
   }
 
   removeNote (id) {
-    const htmlNote = this.getNote(id)
-    this.notesContainer.removeChild(htmlNote)
-    // usunac  z db
+    console.log('remove', this.notesContainer)
+    //Notes.prototype.removeNote(id)
+    /* const htmlNote = this.getNote(id)
+    this.notesContainer.removeChild(htmlNote) */
   }
 }
 
