@@ -1,13 +1,12 @@
 class Stopwatch {
   constructor (displayLocation) {
     this.display = document.querySelector('#' + displayLocation)
-    this.running = false
     this.startTime = 0
     this.elapsedTime = 0
     this.timerInterval = 0
   }
 
-  timeToString (time) { // funkcja nie jest wywolywana
+  timeToString (time) {
     console.log('timeToString', time)
     const diffInHrs = this.time / 3600000
     const hh = Math.floor(diffInHrs)
@@ -33,7 +32,7 @@ class Stopwatch {
     // this.display.innerHTML = 'test'
   }
 
-  start () {
+  start () { // funkcja nie przekazuje rzeczy
     this.startTime = Date.now() - this.elapsedTime
     this.timerInterval = setInterval(
       function printTime () {
