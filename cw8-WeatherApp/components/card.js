@@ -3,18 +3,22 @@ const myKey = 'e323aa96ab8e4e0fa7d363a94e2561db'
 class Card {
   constructor (cityName) {
     this.City = cityName
-    this.Temperature = '000'
     this.id = '' + Date.now()
+    this.Temperature = 0
   }
 
   fetchData () {
+    var maxTemp
     fetch(`https://api.weatherbit.io/v2.0/forecast/daily?city=${this.City},&key=${myKey}&lang=pl`)
       .then(response => response.json())
-      .then(response => {
-        console.log(response.data[0].max_temp)
-        this.Temperature = JSON.parse(response.data[0].max_temp)
-      })
+      .then(data => maxTemp = data)
+      .then(() => console.log('saved', maxTemp[0].max_temp))
   }
 }
 
 export default Card
+/*
+console.log(response.data[0].max_temp)
+        maxTemp = response.data[0].max_temp
+        console.log('temp', this.Temperature)
+        */
