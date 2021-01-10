@@ -37,6 +37,7 @@ class NotesUI {
 
   getNote (id) { // blad  z funkcja z jakiegos powodu nie ma dostepu do kontenera
     const noteSelector = '#' + id
+    console.log('getnoteContainer', this.notesContainer)
     const note = this.notesContainer.querySelector(noteSelector)
     return note
   }
@@ -52,8 +53,8 @@ class NotesUI {
   removeNote (id) {
     console.log('remove', this.notesContainer)
     //Notes.prototype.removeNote(id)
-    /* const htmlNote = this.getNote(id)
-    this.notesContainer.removeChild(htmlNote) */
+    const htmlNote = this.getNote(id)
+    this.notesContainer.removeChild(htmlNote)
   }
 }
 

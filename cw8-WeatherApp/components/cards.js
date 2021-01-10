@@ -10,20 +10,15 @@ class Cards {
 
   addCard (card) {
     card.fetchData()
-    const promises = new Promise((resolve, reject) => {
-      setTimeout(() => { resolve('overment') }, 2000)
-    })
-    promises.then(
-      result => this.CardsArr.push(card)
-    )
-    promises.then(
-      result => this.UIcards.addCard(card)
-    )
-    /*
-      .then(this.CardsArr.push(card))
-      .then(this.UIcards.addCard(card))
-      */
-    // this.db.saveCards(this.CardsArr)
+      .then(
+        result => this.CardsArr.push(card)
+      )
+      .then(
+        result => this.UIcards.addCard(card)
+      )
+      /* .then(
+        result=>this.db.saveCards(this.CardsArr)
+      ) */
   }
 
   removeNote (id) {
