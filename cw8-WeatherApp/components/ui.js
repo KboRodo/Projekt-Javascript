@@ -11,25 +11,27 @@ class UI {
     const htmlCard = document.createElement('div')
     htmlCard.classList.add('card')
     const htmlCity = document.createElement('h1')
-    const htmlMaxTemperature = document.createElement('p')
-    const htmlMinTemperature = document.createElement('p')
+    const htmlCurTemperature = document.createElement('h2')
+    const htmlTempRange = document.createElement('p')
     const htmlIcon = document.createElement('img')
     const htmlDescription = document.createElement('p')
     const htmlRemoveBtn = document.createElement('button')
 
     htmlCity.innerHTML = card.City
-    htmlMaxTemperature.innerHTML = card.maxTemperature
-    htmlMinTemperature.innerHTML = card.minTemperature
+    htmlCurTemperature.innerHTML = card.curTemperature + '°C'
+    htmlTempRange.innerHTML = card.minTemperature + '°C' + ' / ' + card.maxTemperature + '°C'
     htmlDescription.innerHTML = card.Description
     htmlIcon.src = `https://www.weatherbit.io/static/img/icons/${card.Icon}.png`
-    htmlRemoveBtn.innerHTML = 'Usuń'
+    htmlRemoveBtn.classList.add('far')
+    htmlRemoveBtn.classList.add('fa-times-circle')
 
+    htmlCard.appendChild(htmlRemoveBtn)
     htmlCard.appendChild(htmlCity)
-    htmlCard.appendChild(htmlMaxTemperature)
-    htmlCard.appendChild(htmlMinTemperature)
+    htmlCard.appendChild(htmlCurTemperature)
+    htmlCard.appendChild(htmlTempRange)
     htmlCard.appendChild(htmlIcon)
     htmlCard.appendChild(htmlDescription)
-    htmlCard.appendChild(htmlRemoveBtn)
+
     return htmlCard
   }
 

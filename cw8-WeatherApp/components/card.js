@@ -19,11 +19,13 @@ class Card {
   }
 
   assignData (JsonData) {
+    console.log(JsonData)
+    this.City = JsonData.city_name
+    this.curTemperature = (JsonData.data[0].max_temp + JsonData.data[0].min_temp / 2).toFixed(1)
     this.maxTemperature = JsonData.data[0].max_temp
     this.minTemperature = JsonData.data[0].min_temp
     this.Description = JsonData.data[0].weather.description
     this.Icon = JsonData.data[0].weather.icon
-    this.City = JsonData.city_name
   }
 }
 

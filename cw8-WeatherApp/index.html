@@ -6,13 +6,24 @@
     <title>Weather</title>
     <script type="module" src="main.js" defer></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Eczar:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Yet Another Weather App</h1>
+    <div class="navbar">
+        <h1>My Weather App.</h1>
+    </div>
     <div class="cityInput">
-    <input type="text" id="cityName" placeholder="Dodaj miasto...">
-    <button id="addCityButton">Dodaj</button>
+        <input type="text" id="cityName" placeholder="Dodaj miasto...">
+        <button id="addCityButton">
+            <i class="fas fa-plus"></i>
+        </button>
     </div>
     <div class="cardArea" id="cardArea"></div>
+    <div class="credits">
+        <p>Powered by Weatherbit API</p>
+    </div>
 </body>
 </html>

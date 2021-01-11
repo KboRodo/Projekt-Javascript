@@ -16,9 +16,9 @@ class Cards {
       .then(
         result => this.UIcards.addCard(card)
       )
-      /* .then(
-        result=>this.db.saveCards(this.CardsArr)
-      ) */
+      .then(
+        result => this.db.saveCards(this.CardsArr)
+      )
   }
 
   removeNote (id) {
