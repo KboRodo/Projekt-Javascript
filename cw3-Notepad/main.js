@@ -18,7 +18,7 @@ const note = {
 showNotes()// wyswietlanie zaktualizowanego widoku strony
 
 // 3. modyfkowanie struktury htmla-ładowanie po otwarciu strony/dodaniu nowej notatki
-document.querySelector('#shownotes').addEventListener('click', showNotes)
+// document.querySelector('#shownotes').addEventListener('click', showNotes)
 // wyswietlanie notatek
 function showNotes () {
   const notesFromLocalStorage = JSON.parse(localStorage.getItem(lsKey))
@@ -29,7 +29,7 @@ function showNotes () {
     return note
   })
 
-  const notesContainer = document.querySelector('main')
+  const notesContainer = document.querySelector('#main')
   // usuwanie starych kontenerow przez zaladowaniem nowych
   while (notesContainer.firstChild) {
     notesContainer.removeChild(notesContainer.lastChild)
@@ -54,12 +54,12 @@ function showNotes () {
     htmlRemoveBtn.addEventListener('click', removeNote)
     htmlPinBtn.addEventListener('click', pinnedNote)
 
+    htmlNote.appendChild(htmlRemoveBtn)
+    htmlNote.appendChild(htmlPinBtn)
     htmlNote.classList.add('note')
     htmlNote.appendChild(htmlTitle)
     htmlNote.appendChild(htmlContent)
     htmlNote.appendChild(htmlDate)
-    htmlNote.appendChild(htmlRemoveBtn)
-    htmlNote.appendChild(htmlPinBtn)
 
     htmlNote.style.backgroundColor = note.colour
 
@@ -113,10 +113,10 @@ function onNewNote () {
 }
 // przypinanie/odpinanie notatki
 function pinnedNote (event) {
-  const elementDate = event.target.parentNode.querySelector('h4').innerHTML
+  const elementDate = event.target.parentNode.querySelector('h4').innerHTML // data notatki do przypięcia
   const notesFromLocalStorage = JSON.parse(localStorage.getItem(lsKey))
 
-  let testDate
+  let testDate // data notatki na którą wyswietla program
   notes.length = 0
 
   notesFromLocalStorage.map(note => {

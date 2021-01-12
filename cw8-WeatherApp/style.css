@@ -19,6 +19,8 @@ body{
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 .card{
     min-width: 300px;
@@ -41,6 +43,7 @@ body{
     margin-top: 5px;
     border: none;
     background:none;
+    outline:none;
 }
 .cityInput{
     text-align: center;
@@ -55,6 +58,7 @@ body{
     border: 0px;
     padding: 10px;
     text-align: center;
+    outline:none;
 }
 .cityInput input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
    padding-left: 3px;
@@ -64,14 +68,21 @@ body{
     height: 50px;
     border-radius: 30px;
     border: 0px;
+    outline:none;
 }
 .credits{
     font-size: 10px;
     position: absolute;
     margin-left: auto;
     margin-right: auto;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
     text-align: center;
+    color: white;
+    text-decoration: none;
+}
+.credits a{
+    color: white;
+    text-decoration: none;
 }

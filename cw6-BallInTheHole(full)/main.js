@@ -1,4 +1,5 @@
-import Stopwatch from './stopwatch.js'
+import Stopwatch from './components/stopwatch.js'
+import Hole from './components/Hole.js'
 
 document.querySelector('#startBtn').addEventListener('click', startGame)
 document.querySelector('#gameArea').style.display = 'none'
