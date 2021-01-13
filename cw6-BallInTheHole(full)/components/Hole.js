@@ -1,7 +1,9 @@
 class Hole {
-  constructor (x, y) {
-    this.x = x
-    this.y = y
+  constructor (posX, posY, radius, fill) {
+    this.posX = posX
+    this.posY = posY
+    this.radius = radius
+    this.fill = fill
   }
 }
 

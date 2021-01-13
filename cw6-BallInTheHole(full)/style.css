@@ -19,8 +19,9 @@ body{
     width: 100vw;
     height: 100vh;
 }
+#startScreen{
+    display: block
+}
 .canvas{
-    height: 100%;
-    width: 100%;
-    background-color: lightblue;
+    background: black;
 }
