@@ -20,7 +20,7 @@ class NotesUI {
 
     htmlTitle.innerHTML = note.title
     htmlContent.innerHTML = note.content
-    htmlDate.innerHTML = note.createdDate.toLocaleString()
+    // htmlDate.innerHTML = note.createdDate.toLocaleString()
     htmlRemoveBtn.innerHTML = 'Usuń'
     note.pinned ? htmlPinBtn.innerHTML = 'Odepnij' : htmlPinBtn.innerHTML = 'Przypnij'
 
