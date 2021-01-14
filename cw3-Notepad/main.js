@@ -58,8 +58,8 @@ function showNotes () {
     htmlNote.appendChild(htmlPinBtn)
     htmlNote.classList.add('note')
     htmlNote.appendChild(htmlTitle)
-    htmlNote.appendChild(htmlContent)
     htmlNote.appendChild(htmlDate)
+    htmlNote.appendChild(htmlContent)
 
     htmlNote.style.backgroundColor = note.colour
 
