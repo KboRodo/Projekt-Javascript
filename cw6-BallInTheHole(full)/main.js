@@ -50,6 +50,11 @@ function startGame () {
   stopWatch()
   stopWatch()
 }
+function restartGame () {
+  document.querySelector('#gameWon').style.display = 'none'
+  document.querySelector('#gameLost').style.display = 'none'
+  document.querySelector('#startScreen').style.display = 'block'
+}
 
 function endGame (isWon) {
   timeElapsed = (time / 100).toFixed(2)
@@ -58,10 +63,12 @@ function endGame (isWon) {
     console.log('gra wygrana')
     document.querySelector('#gameWon').style.display = 'block'// ukryj startScreen
     document.querySelector('#gameTime').textContent = `Twój czas to: ${timeElapsed}`
+    document.querySelector('#tryAgain').addEventListener('click', restartGame)
   } else {
     console.log('gra przergana')
     document.querySelector('#gameLost').style.display = 'block'// ukryj startScreen
     document.querySelector('#gameTime').textContent = `Twój czas to: ${timeElapsed}`
+    document.querySelector('#tryAgain').addEventListener('click', restartGame)
   }
   clearInterval(timeInterval)
 }
