@@ -7,21 +7,19 @@ class Gameboard {
     this.canvas.height = height
   }
 
-  addHole (positionX, positionY, radius) {
+  addHole (positionX, positionY, radius, fill) {
     this.c.beginPath()
     this.c.arc(positionX, positionY, radius, 0, Math.PI * 2, false)
     this.c.closePath()
-
-    this.c.fillSyle = 'red'
+    this.c.fillStyle = fill
     this.c.fill()
   }
 
   addBall (positionX, positionY, radius) {
+    this.c.fillStyle = 'blue'
     this.c.beginPath()
     this.c.arc(positionX, positionY, radius, 0, Math.PI * 2, false)
     this.c.closePath()
-
-    this.c.fillSyle = 'blue'
     this.c.fill()
   }
 

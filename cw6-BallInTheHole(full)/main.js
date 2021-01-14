@@ -4,6 +4,8 @@ import Gameboard from './components/canvas.js'
 import Hole from './components/Hole.js'
 
 document.querySelector('#startBtn').addEventListener('click', startGame)
+document.querySelector('#gameWon').style.display = 'none'// ukryj startScreen
+document.querySelector('#gameLost').style.display = 'none'// ukryj startScreen
 document.querySelector('#gameArea').style.display = 'none'
 window.addEventListener('deviceorientation', moveBall)
 
@@ -16,15 +18,52 @@ let speedY = 0
 // tworzenie canvasu
 var gameboard = new Gameboard('canvas', window.innerWidth, window.innerHeight)
 var holeArray = new Array()
-// const gameTime = new Stopwatch('timer')// czas gry
+
+// zmienne do stopera
+let time = 0
+let isOn = false
+let timeInterval
+const timeDisplay = document.querySelector('#timer')
+let timeElapsed
+
+function stopWatch () {
+  if (!isOn) {
+    isOn = !isOn
+    time = 0
+    timeInterval = setInterval(startTimer, 10)
+  } else {
+    time = 0
+    isOn = !isOn
+  }
+}
+const startTimer = () => {
+  time++
+  timeDisplay.textContent = (time / 100).toFixed(2)
+}
 
 function startGame () {
   document.querySelector('#startScreen').style.display = 'none'// ukryj startScreen
   document.querySelector('#gameArea').style.display = 'block' // pokaz gameArea
-  addHoles(document.querySelector('#holes').value - 1)
+  addHoles(document.querySelector('#holes').value)
   spawnHoles()
   animate()
-  // gameTime.start()
+  stopWatch()
+  stopWatch()
+}
+
+function endGame (isWon) {
+  timeElapsed = (time / 100).toFixed(2)
+  document.querySelector('#gameArea').style.display = 'none'
+  if (isWon) {
+    console.log('gra wygrana')
+    document.querySelector('#gameWon').style.display = 'block'// ukryj startScreen
+    document.querySelector('#gameTime').textContent = `Twój czas to: ${timeElapsed}`
+  } else {
+    console.log('gra przergana')
+    document.querySelector('#gameLost').style.display = 'block'// ukryj startScreen
+    document.querySelector('#gameTime').textContent = `Twój czas to: ${timeElapsed}`
+  }
+  clearInterval(timeInterval)
 }
 
 function moveBall (e) {
@@ -46,7 +85,11 @@ function animate () {
 function checkColision () {
   holeArray.forEach(function (hole) {
     if (hole.posX + hole.radius > x && hole.posX - hole.radius < x && hole.posY + hole.radius > y && hole.posY - hole.radius < y) {
-      console.log('colision')
+      if (hole.isWin === false) {
+        endGame(false)
+      } else {
+        endGame(true)
+      }
     }
   })
 }
@@ -55,20 +98,28 @@ function checkColision () {
 function addHoles (numberOfHoles) {
   let posX, posY, radius
 
-  for (let i = 0; i < numberOfHoles; i++) {
-    if (numberOfHoles > 1) {
+  radius = Math.floor(Math.random() * (50 - 20)) + 20
+  posX = Math.floor(Math.random() * ((window.innerWidth - radius + 10) - (radius + 10))) + (radius + 10)
+  posY = Math.floor(Math.random() * ((window.innerHeight - radius + 10) - (radius + 10))) + (radius + 10)
+  holeArray.push(new Hole(posX, posY, radius, true))
+
+  if (numberOfHoles > 1) {
+    for (let i = 0; i < numberOfHoles - 1; i++) {
       radius = Math.floor(Math.random() * (50 - 20)) + 20
       posX = Math.floor(Math.random() * ((window.innerWidth - radius + 10) - (radius + 10))) + (radius + 10)
       posY = Math.floor(Math.random() * ((window.innerHeight - radius + 10) - (radius + 10))) + (radius + 10)
-      holeArray.push(new Hole(posX, posY, radius))
+      holeArray.push(new Hole(posX, posY, radius, false))
     }
-    console.log(holeArray)
   }
 }
 
 // wyswietlanie dziur na planszy
 function spawnHoles () {
   holeArray.forEach(function (hole) {
-    gameboard.addHole(hole.posX, hole.posY, hole.radius)
+    if (hole.isWin === false) {
+      gameboard.addHole(hole.posX, hole.posY, hole.radius, '#FF0000')
+    } else {
+      gameboard.addHole(hole.posX, hole.posY, hole.radius, '#00D77F')
+    }
   })
 }
